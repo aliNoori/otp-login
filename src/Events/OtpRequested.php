@@ -2,11 +2,11 @@
 namespace OtpLogin\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
-use OtpLogin\Models\OtpCode;
+use Illuminate\Database\Eloquent\Model;
 
 class OtpRequested
 {
     use Dispatchable;
 
-    public function __construct(public OtpCode $otp) {}
+    public function __construct(public Model $otp) {}
 }
