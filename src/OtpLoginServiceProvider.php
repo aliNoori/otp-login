@@ -31,6 +31,11 @@ class OtpLoginServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
 
         $this->publishes([
+            __DIR__ . '/Database/Migrations' => database_path('migrations'),
+        ], 'otp-login-migrations');
+
+
+        $this->publishes([
             __DIR__ . '/publishable/Models' => app_path('Models/OtpLogin'),
         ], 'otp-login-models');
 
