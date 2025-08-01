@@ -1,0 +1,23 @@
+{
+    "name": "amedev/otp-login",
+    "description": "OTP Login module for Laravel",
+    "version": "dev-main",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "OtpLogin\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OtpLogin\\OtpLoginServiceProvider"
+            ]
+        }
+    }
+}
