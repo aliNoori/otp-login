@@ -5,7 +5,7 @@ namespace OtpLogin\Providers;
 use Illuminate\Support\ServiceProvider;
 use OtpLogin\Contracts\SmsSenderInterface;
 use OtpLogin\Services\OtpCodeService;
-use src\Console\Commands\FixModelNamespace;
+use OtpLogin\Console\Commands\FixModelNamespace;
 
 class OtpLoginServiceProvider extends ServiceProvider
 {

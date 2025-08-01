@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Console\Commands;
+namespace OtpLogin\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
