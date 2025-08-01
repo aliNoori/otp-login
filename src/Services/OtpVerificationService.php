@@ -8,7 +8,7 @@ class OtpVerificationService
 {
     public function verify(string $phone, string $code): bool
     {
-        $model = app(config('otp-login.models.otp'));
+        $model = config('otp-login.models.otp');
 
         $otp = $model::where('phone', $phone)
             ->where('code', $code)

@@ -16,7 +16,7 @@ class OtpPolicyService
 
     public function validateRequest(string $phone): void
     {
-        $model = app(config('otp-login.models.otp'));
+        $model = config('otp-login.models.otp');
 
         if ($model::where('phone', $phone)
             ->where('expires_at', '>', now())

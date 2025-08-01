@@ -24,7 +24,7 @@ class OtpCodeService
     {
         $code = $this->generateCode();
 
-        $model = app(config('otp-login.models.otp'));
+        $model = config('otp-login.models.otp');
 
         return $model::create([
             'phone' => $phone,
