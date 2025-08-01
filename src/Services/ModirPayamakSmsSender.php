@@ -22,8 +22,8 @@ class ModirPayamakSmsSender implements SmsSenderInterface
 
         // Payload for the API request
         $payload = [
-            'code' => env('SMS_PATTERN_CODE', 'hdsxp8rpsuerefo'), // Pattern code
-            'sender' => env('SMS_SENDER', '+983000505'),          // Sender number
+            'code' => env('SMS_PATTERN_CODE'), // Pattern code
+            'sender' => env('SMS_SENDER'),          // Sender number
             'recipient' => $phoneNumber,                                // Destination phone number
             'variable' => [                                       // Variables for pattern
                 'verification-code' => $message                  // Dynamic data within pattern
@@ -31,7 +31,7 @@ class ModirPayamakSmsSender implements SmsSenderInterface
         ];
         try {
             // Send POST request to SMS service with Basic Auth
-            $response = Http::withBasicAuth(env('SMS_USERNAME', '9142766601'), env('SMS_PASSWORD', 'Mh@36463646'))
+            $response = Http::withBasicAuth(env('SMS_USERNAME'), env('SMS_PASSWORD'))
                 ->asJson()
                 ->post($url, $payload);
 
