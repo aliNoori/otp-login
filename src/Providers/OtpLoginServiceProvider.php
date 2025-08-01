@@ -1,6 +1,6 @@
 <?php
 
-namespace OtpLogin;
+namespace OtpLogin\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use OtpLogin\Contracts\SmsSenderInterface;
@@ -10,34 +10,36 @@ use OtpLogin\Services\OtpCodeService;
 
 class OtpLoginServiceProvider extends ServiceProvider
 {
+    private string $basePath;
+
     public function boot(): void
     {
+        $this->basePath = dirname(__DIR__);
 
-        $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
+        $this->loadRoutesFrom($this->basePath . '/Http/routes.php');
 
-        $this->mergeConfigFrom(__DIR__.'/config/otp-login.php', 'otp-login');
+        $this->mergeConfigFrom($this->basePath . '/config/otp-login.php', 'otp-login');
 
         $this->publishes([
-            __DIR__.'/config/otp-login.php' => config_path('otp-login.php'),
+            $this->basePath . '/config/otp-login.php' => config_path('otp-login.php'),
         ], 'otp-login-config');
 
-        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'otp-login');
+        $this->loadTranslationsFrom($this->basePath . '/resources/lang', 'otp-login');
 
         $this->publishes([
-            __DIR__.'/resources/lang' => resource_path('lang/vendor/otp-login'),
+            $this->basePath . '/resources/lang' => resource_path('lang/vendor/otp-login'),
         ], 'otp-login-translations');
 
-        // مایگریشن‌ها رو لود کن
-        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
+        $this->loadMigrationsFrom($this->basePath . '/Database/Migrations');
 
         $this->publishes([
-            __DIR__ . '/Database/Migrations' => database_path('migrations'),
+            $this->basePath . '/Database/Migrations' => database_path('migrations'),
         ], 'otp-login-migrations');
 
-
         $this->publishes([
-            __DIR__ . '/publishable/Models' => app_path('Models/OtpLogin'),
+            $this->basePath . '/Models' => app_path('Models'),
         ], 'otp-login-models');
+
 
 
         $this->app->register(EventServiceProvider::class);

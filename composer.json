@@ -12,7 +12,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "OtpLogin\\OtpLoginServiceProvider"
+                "OtpLogin\\Providers\\OtpLoginServiceProvider"
             ]
         }
     }

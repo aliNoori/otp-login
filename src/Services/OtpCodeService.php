@@ -24,8 +24,9 @@ class OtpCodeService
     {
         $code = $this->generateCode();
 
+        $model = app(config('otp-login.models.otp'));
 
-        return OtpCode::create([
+        return $model::create([
             'phone' => $phone,
             'code' => $code,
             'expires_at' => Carbon::now()->addSeconds($ttlSeconds),

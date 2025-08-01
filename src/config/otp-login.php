@@ -45,6 +45,6 @@ return [
     'code_lifetime' => 120, // seconds
 
     'models' => [
-        'otpCode' => \App\Models\SmartPayment\OtpCode::class,
+        'otp' => \OtpLogin\Models\OtpCode::class, // مسیر پیش‌فرض
     ],
 ];
