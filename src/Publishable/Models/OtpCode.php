@@ -1,6 +1,6 @@
 <?php
 
-namespace OtpLogin\Models;
+namespace OtpLogin\Publishable\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -20,11 +20,6 @@ class OtpCode extends Model
     ];
 
     public $timestamps = true;
-
-    public static function customModel(): string
-    {
-        return config('otp-login.models.otpCode', self::class);
-    }
 
     public function isExpired(): bool
     {

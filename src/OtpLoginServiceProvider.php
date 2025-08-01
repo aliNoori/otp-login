@@ -19,13 +19,20 @@ class OtpLoginServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/config/otp-login.php' => config_path('otp-login.php'),
-        ], 'config');
+        ], 'otp-login-config');
 
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'otp-login');
 
-       /* $this->publishes([
+        $this->publishes([
             __DIR__.'/resources/lang' => resource_path('lang/vendor/otp-login'),
-        ], 'otp-login-translations');*/
+        ], 'otp-login-translations');
+
+        // مایگریشن‌ها رو لود کن
+        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
+
+        $this->publishes([
+            __DIR__ . '/publishable/Models' => app_path('Models/OtpLogin'),
+        ], 'otp-login-models');
 
 
         $this->app->register(EventServiceProvider::class);
