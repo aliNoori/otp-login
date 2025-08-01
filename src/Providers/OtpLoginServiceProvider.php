@@ -7,6 +7,7 @@ use OtpLogin\Contracts\SmsSenderInterface;
 use OtpLogin\Providers\EventServiceProvider;
 use OtpLogin\Providers\RouteServiceProvider;
 use OtpLogin\Services\OtpCodeService;
+use OtpLogin\src\Console\Commands\FixModelNamespace;
 
 class OtpLoginServiceProvider extends ServiceProvider
 {
@@ -64,5 +65,9 @@ class OtpLoginServiceProvider extends ServiceProvider
 
             return new $class();
         });
+
+        $this->commands([
+            FixModelNamespace::class,
+        ]);
     }
 }
