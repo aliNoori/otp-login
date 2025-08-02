@@ -34,16 +34,18 @@ class OtpCodeService
      *
      * @throws Exception If model creation fails or config is invalid.
      */
-    public function create(string $phone, int $ttlSeconds = 120): Model
+    public function create(string $phone, ?int $ttlSeconds = null): Model
     {
         // Resolve the model class from config
         $modelClass = config('otp-login.models.otp');
+
+        $ttl = $ttlSeconds ?? config('otp-login.code_lifetime', 120); // fallback: 120
 
         // Create a new OTP record
         $model = $modelClass::create([
             'phone'       => $phone,
             'code'        => $this->generateCode(),
-            'expires_at'  => now()->addSeconds($ttlSeconds),
+            'expires_at'  => now()->addSeconds($ttl),
         ]);
 
         // Validate model instance
