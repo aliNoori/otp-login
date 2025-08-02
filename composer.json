@@ -2,6 +2,7 @@
     "name": "amedev/otp-login",
     "description": "OTP Login module for Laravel",
     "type": "library",
+    "version": "1.0.0",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -14,5 +15,10 @@
                 "OtpLogin\\Providers\\OtpLoginServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "release": [
+            "@php release.php"
+        ]
     }
 }
