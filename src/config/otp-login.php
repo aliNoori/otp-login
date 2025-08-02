@@ -41,15 +41,15 @@ return [
     'drivers' => [
         'modirpayamak' => [
             'class' => ModirPayamakSmsSender::class,
-            'key' => env('MODIR_API_KEY'), // API key for ModirPayamak
-            'sender' => env('MODIR_SENDER', '10004346'), // Default sender number
+            'key' => env('SMS_PATTERN_CODE'), // API key for ModirPayamak
+            'sender' => env('SMS_SENDER', '10004346'), // Default sender number
             'username' => env('SMS_USERNAME'),
             'password' => env('SMS_PASSWORD'),
         ],
         'kavenegar' => [
             'class' => KavenegarSmsSender::class,
-            'key' => env('KAVENEGAR_API_KEY'), // API key for Kavenegar
-            'sender' => env('KAVENEGAR_SENDER', '10004346'), // Default sender number
+            'key' => env('SMS_PATTERN_CODE'), // API key for Kavenegar
+            'sender' => env('SMS_SENDER', '10004346'), // Default sender number
             'username' => env('SMS_USERNAME'),
             'password' => env('SMS_PASSWORD'),
         ],
