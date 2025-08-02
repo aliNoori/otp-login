@@ -3,6 +3,7 @@
 namespace OtpLogin\Services;
 
 use Exception;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
 use OtpLogin\Contracts\SmsSenderInterface;
 
@@ -48,7 +49,10 @@ class KavenegarSmsSender implements SmsSenderInterface
      */
     public function send(string $phoneNumber, string $message): bool
     {
+
         $url = "https://api.kavenegar.com/v1/{$this->apiKey}/sms/send.json";
+
+
 
         try {
             $response = Http::get($url, [

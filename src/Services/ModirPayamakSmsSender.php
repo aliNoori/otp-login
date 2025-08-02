@@ -3,6 +3,7 @@
 namespace OtpLogin\Services;
 
 use Exception;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
 use OtpLogin\Contracts\SmsSenderInterface;
 
@@ -28,10 +29,12 @@ class ModirPayamakSmsSender implements SmsSenderInterface
         // API endpoint for pattern-based SMS
         $url = 'https://api2.ippanel.com/api/v1/sms/pattern/normal/send';
 
+        $driverConfig = Config::get('otp-login.drivers.modirpayamak');
+
         // Prepare payload with dynamic pattern variables
         $payload = [
-            'code'     => env('SMS_PATTERN_CODE'), // Pattern code defined in IPPanel
-            'sender'   => env('SMS_SENDER'),       // Sender line number
+            'code'     => $driverConfig['key'], // Pattern code defined in IPPanel
+            'sender'   => $driverConfig['sender'],       // Sender line number
             'recipient'=> $phoneNumber,            // Destination phone number
             'variable' => [
                 'verification-code' => $message    // Inject OTP code into pattern
@@ -41,8 +44,8 @@ class ModirPayamakSmsSender implements SmsSenderInterface
         try {
             // Send POST request with Basic Auth credentials
             $response = Http::withBasicAuth(
-                env('SMS_USERNAME'),
-                env('SMS_PASSWORD')
+                $driverConfig['username'],
+                $driverConfig['password'],
             )
                 ->asJson()
                 ->post($url, $payload);
