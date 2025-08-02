@@ -2,7 +2,7 @@
     "name": "amedev/otp-login",
     "description": "OTP Login module for Laravel",
     "type": "library",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "license": "MIT",
     "authors": [
         {
