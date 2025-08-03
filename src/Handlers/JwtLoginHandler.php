@@ -32,6 +32,7 @@ class JwtLoginHandler implements OtpLoginHandlerInterface
 
         // Return token details
         return [
+            'user'=>$user,
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60, // in seconds
