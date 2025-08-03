@@ -29,7 +29,7 @@ class OtpCodeService
      * Create and persist a new OTP code for the given phone number.
      *
      * @param string $phone The recipient's phone number.
-     * @param int $ttlSeconds Time-to-live in seconds (default: 120).
+     * @param int|null $ttlSeconds Time-to-live in seconds (default: 120).
      * @return Model The newly created OTP model instance.
      *
      * @throws Exception If model creation fails or config is invalid.

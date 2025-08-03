@@ -2,6 +2,7 @@
 
 namespace OtpLogin\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use OtpLogin\Traits\HasApiResponses;
@@ -29,7 +30,7 @@ class SendOtpController extends Controller
      * @param OtpPolicyService $otpPolicyService Service for enforcing rate limits and request policies.
      * @return JsonResponse A success response indicating the OTP was sent.
      *
-     * @throws \Illuminate\Validation\ValidationException If policy validation fails.
+     * @throws Exception If policy validation fails.
      */
     public function send(
         SendOtpRequest $request,

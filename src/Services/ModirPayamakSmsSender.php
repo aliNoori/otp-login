@@ -29,7 +29,7 @@ class ModirPayamakSmsSender implements SmsSenderInterface
         // API endpoint for pattern-based SMS
         $url = 'https://api2.ippanel.com/api/v1/sms/pattern/normal/send';
 
-        $driverConfig = Config::get('otp-login.drivers.modirpayamak');
+        $driverConfig = Config::get('otp-login.drivers');
 
         // Prepare payload with dynamic pattern variables
         $payload = [

@@ -34,8 +34,8 @@ class KavenegarSmsSender implements SmsSenderInterface
      */
     public function __construct()
     {
-        $this->apiKey = config('otp-login.drivers.kavenegar.key');
-        $this->sender = config('otp-login.drivers.kavenegar.sender', '10004346');
+        $this->apiKey = config('otp-login.drivers.key');
+        $this->sender = config('otp-login.drivers.sender', '10004346');
     }
 
     /**
